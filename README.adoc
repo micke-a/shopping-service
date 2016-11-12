@@ -1,0 +1,93 @@
+
+
+## How To Run
+
+### Configure your Google Maps API key
+
+----
+#Windows, dos prompt
+set GOOGLE_MAPS_API_KEY=AIza....
+
+#*nix
+export GOOGLE_MAPS_API_KEY=AIza...
+----
+
+This environment variable will be used by the Shopping API application.
+
+### Start The Application
+
+----
+cd /fol/der/shipping-service
+gradlew bootRun
+----
+
+This will startup the application using the `local` Spring profile which will load up some noddy test data,
+briefly described in the <<Local Environment Test Data>> section.
+
+### Testing Driving The Application
+
+Once the application is up and running you'll find the http://localhost:8080/docs/[Spring Boot Actuator Generated Documentation]
+which will provide you with a general starting point.
+
+#### Local Environment Test Data
+
+When the `local` Spring profile is active the following simple Shop test data is generated with the following long/lat
+coordinates for some simple testing.
+
+----
+9........x
+8.......x.
+7......x..
+6.....x...
+5....x....
+4...x.....
+3..x......
+2.x.......
+1x........
+ 123456789
+----
+
+#### List All Shops
+
+[source,json]
+----
+/shops
+----
+
+#### Find Nearest Shop
+
+[source,json]
+----
+/shops/1.5/1.5/
+----
+
+*Note*: trailing slash is needed, otherwise the URL is truncated after the last dot
+
+
+#### Add a Shop
+
+[source,json]
+----
+{
+"name": "New Shop",
+"address": {
+  "number": "70 Buckwells Field",
+  "postCode": "SG143FF"
+}
+}
+
+----
+
+## Troubleshooting
+
+### Getting cannot find symbol method getXyz()
+
+If you get this in your IDE it is probably because annotation pre-processing isn't configured.
+
+See https://www.jetbrains.com/help/idea/2016.2/configuring-annotation-processing.html for how to set this up in intellij
+
+### Tests Are Failing, why?
+
+Double check that you've set the `GOOGLE_MAPS_API_KEY` if not the context load test will fail.
+
+When running integration tests you'll also need a the application running on localhost!

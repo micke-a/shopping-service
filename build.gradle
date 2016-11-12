@@ -1,0 +1,70 @@
+buildscript {
+    ext {
+        springBootVersion = '1.4.2.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'groovy'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+
+jar {
+    baseName = 'shopping-service'
+    version = '0.0.1-SNAPSHOT'
+}
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+sourceSets{
+    main {
+        java.srcDir "src/main/java"
+        resources.srcDir "src/main/resources"
+    }
+    test {
+        java.srcDir "src/test/java"
+        resources.srcDir "src/test/resources"
+    }
+    integrationTest {
+        groovy.srcDirs = ["src/integrationTest/groovy"]
+        java.srcDir "src/integrationTest/java"
+        resources.srcDir "src/integrationTest/resources"
+
+        compileClasspath += main.output + test.output
+        runtimeClasspath += main.output + test.output
+    }
+}
+configurations {
+    integrationTestCompile.extendsFrom testCompile
+    integrationTestRuntime.extendsFrom testRuntime
+}
+
+repositories {
+    mavenCentral()
+}
+
+
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter-actuator')
+    compile('org.springframework.boot:spring-boot-actuator-docs')
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')
+    compile('com.h2database:h2')
+    compile('org.springframework.boot:spring-boot-starter-jersey')
+    compile('org.springframework.boot:spring-boot-starter-data-rest')
+    compile('com.google.maps:google-maps-services:0.1.16')
+    compile('org.projectlombok:lombok:1.16.10')
+
+    runtime('org.springframework.boot:spring-boot-devtools')
+
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+
+    integrationTestCompile("org.codehaus.groovy:groovy-all:2.4.7")
+    integrationTestCompile("org.spockframework:spock-core:1.0-groovy-2.4")
+    integrationTestCompile("org.codehaus.groovy.modules.http-builder:http-builder:0.7.1")
+}
