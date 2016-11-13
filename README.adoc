@@ -1,8 +1,8 @@
 
+## Setup
 
-## How To Run
+WARNING: You need to set an environment variable with your Google Maps API key as follows for the application to start and for integration tests to pass
 
-### Configure your Google Maps API key
 
 ----
 #Windows, dos prompt
@@ -11,6 +11,52 @@ set GOOGLE_MAPS_API_KEY=AIza....
 #*nix
 export GOOGLE_MAPS_API_KEY=AIza...
 ----
+
+WARNING: `JAVA_HOME` must also be set to a Java8 JDK!
+
+----
+#Windows, dos prompt
+set JAVA_HOME=c:....
+
+#*nix
+export JAVA_HOME=/..
+----
+
+## How To Build
+
+The application uses Gradle so building it is as straightforward as...
+
+----
+# Clone the repo
+git clone https://github.com/micke-a/shopping-service.git
+
+#Build artifact
+gradlew assemble
+----
+
+## How To Test
+
+Start the application in order for integration tests to
+
+----
+gradlew bootRun
+----
+
+Once it is up and running, you can execute all tests as follows
+----
+gradlew check
+----
+
+To only run unit tests there is no need to start the application and you can simply run
+
+----
+gradlew test
+----
+
+
+## How To Run
+
+
 
 This environment variable will be used by the Shopping API application.
 
@@ -26,8 +72,9 @@ briefly described in the <<Local Environment Test Data>> section.
 
 ### Testing Driving The Application
 
-Once the application is up and running you'll find the http://localhost:8080/docs/[Spring Boot Actuator Generated Documentation]
-which will provide you with a general starting point.
+Once the application is up and running you can access the usual http://localhost:8080/docs/[Spring Boot Actuator Generated Documentation]
+
+Also added springfox swagger2 library which gives the wee bit more interesting http://localhost:8080/swagger-ui.html[Swagger API Documentation] to click around
 
 #### Local Environment Test Data
 

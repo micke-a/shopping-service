@@ -1,4 +1,4 @@
-package java.me.mikael.shopping.api
+package me.mikael.shopping.api
 
 import groovyx.net.http.RESTClient
 import static groovyx.net.http.ContentType.*
