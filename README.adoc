@@ -93,14 +93,14 @@ coordinates for some simple testing.
 
 [source,json]
 ----
-/shops
+GET /shops
 ----
 
 #### Find Nearest Shop
 
 [source,json]
 ----
-/shops/1.5/1.5/
+GET /shops/1.5/1.5/
 ----
 
 *Note*: trailing slash is needed, otherwise the URL is truncated after the last dot
@@ -110,6 +110,8 @@ coordinates for some simple testing.
 
 [source,json]
 ----
+POST /shops
+
 {
 "name": "New Shop",
 "address": {
