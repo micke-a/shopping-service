@@ -3,7 +3,6 @@
 
 WARNING: You need to set an environment variable with your Google Maps API key as follows for the application to start and for integration tests to pass
 
-
 ----
 #Windows, dos prompt
 set GOOGLE_MAPS_API_KEY=AIza....
@@ -36,13 +35,13 @@ gradlew assemble
 
 ## How To Test
 
-Start the application in order for integration tests to
+Start the application in order for integration tests to work
 
 ----
 gradlew bootRun
 ----
 
-Once it is up and running, you can execute all tests as follows
+Once the application is up and running, you can execute all tests as follows
 ----
 gradlew check
 ----
@@ -57,13 +56,9 @@ gradlew test
 ## How To Run
 
 
-
-This environment variable will be used by the Shopping API application.
-
 ### Start The Application
 
 ----
-cd /fol/der/shipping-service
 gradlew bootRun
 ----
 
