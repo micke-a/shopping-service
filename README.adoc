@@ -1,5 +1,5 @@
 
-## Setup
+# Setup
 
 WARNING: You need to set an environment variable with your Google Maps API key as follows for the application to start and for integration tests to pass
 
@@ -21,6 +21,21 @@ set JAVA_HOME=c:....
 export JAVA_HOME=/..
 ----
 
+
+# Dropwizard Backend Application
+
+## How To Build
+
+## How To Test
+
+## How To Run
+----
+
+./gradlew shopping-service-dw:run
+
+----
+
+# Spring-Boot Backend Application
 ## How To Build
 
 The application uses Gradle so building it is as straightforward as...

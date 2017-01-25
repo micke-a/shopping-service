@@ -1,0 +1,39 @@
+buildscript {
+    ext {
+        springBootVersion = '1.4.2.RELEASE'
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+
+    repositories {
+        mavenCentral()
+    }
+}
+
+apply plugin: 'org.springframework.boot'
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+jar {
+    baseName = 'shopping-service-lib'
+}
+
+dependencies {
+    //Adding in some dependencies I don't really want here just to get it to compile after rectoring into lib module
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')
+    compile('org.springframework.boot:spring-boot-starter-data-rest')
+    compile('org.springframework.boot:spring-boot-starter-jersey')
+    compile('com.google.maps:google-maps-services:0.1.16')
+    compile('org.projectlombok:lombok:1.16.10')
+
+    runtime('org.springframework.boot:spring-boot-devtools')
+}
+
+
+tasks.withType(Test) {
+    reports.html.destination = file("${reporting.baseDir}/${name}")
+}

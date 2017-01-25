@@ -1,0 +1,57 @@
+apply plugin: 'gradle-one-jar'
+apply plugin: 'application'
+
+// UTF-8 should be standard by now. So use it!
+//[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+
+// Add Gradle OneJar Plugin, see https://github.com/rholder/gradle-one-jar
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.github.rholder:gradle-one-jar:1.0.3'
+    }
+}
+
+// Set our project variables
+project.ext {
+    dropwizardVersion = '1.0.5'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile('com.google.maps:google-maps-services:0.1.16')
+    compile( project(':shopping-service-lib')){
+        exclude group:'org.springframework.boot'
+    }
+    compile("io.dropwizard:dropwizard-core:${dropwizardVersion}")
+    compile("io.dropwizard:dropwizard-hibernate:${dropwizardVersion}")
+    compile("io.dropwizard:dropwizard-migrations:${dropwizardVersion}")
+    compile("io.dropwizard:dropwizard-auth:${dropwizardVersion}")
+
+    compile("com.h2database:h2:1.3.168")
+
+}
+
+// The main class of the application
+mainClassName = 'me.mikael.shopping.ShoppingApplication'
+
+// Configure the oneJar task
+task oneJar(type: OneJar) {
+    mainClass = mainClassName
+}
+
+// Configure the run task to start the Dropwizard service
+run {
+    args 'server', './src/dist/config/config.yml'
+
+}
+
+artifacts {
+    oneJar
+}

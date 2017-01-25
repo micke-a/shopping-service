@@ -1,0 +1,84 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    ext {
+        springBootVersion = '1.4.2.RELEASE'
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+apply plugin: 'org.springframework.boot'
+jar {
+    baseName = 'shopping-service-sb'
+}
+
+sourceSets{
+    main {
+        java.srcDir "src/main/java"
+        resources.srcDir "src/main/resources"
+    }
+    test {
+        java.srcDir "src/test/java"
+        resources.srcDir "src/test/resources"
+    }
+    integrationTest {
+        groovy.srcDirs = ["src/integrationTest/groovy"]
+        java.srcDir "src/integrationTest/java"
+        resources.srcDir "src/integrationTest/resources"
+
+        compileClasspath += main.output + test.output
+        runtimeClasspath += main.output + test.output
+    }
+}
+configurations {
+    integrationTestCompile.extendsFrom testCompile
+    integrationTestRuntime.extendsFrom testRuntime
+}
+
+
+dependencies {
+    compile project(':shopping-service-lib')
+
+    compile('org.springframework.boot:spring-boot-starter-actuator')
+    compile('org.springframework.boot:spring-boot-actuator-docs')
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')
+    compile('org.springframework.boot:spring-boot-starter-jersey')
+    compile('org.springframework.boot:spring-boot-starter-data-rest')
+
+    compile('com.h2database:h2')
+    compile('io.springfox:springfox-swagger2:2.6.0')
+    compile('io.springfox:springfox-swagger-ui:2.6.0')
+
+
+    runtime('org.springframework.boot:spring-boot-devtools')
+
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+
+    integrationTestCompile("org.codehaus.groovy:groovy-all:2.4.7")
+    integrationTestCompile("org.spockframework:spock-core:1.0-groovy-2.4")
+    integrationTestCompile("org.codehaus.groovy.modules.http-builder:http-builder:0.7.1")
+}
+
+task integrationTest(type: Test) {
+    mustRunAfter test
+    outputs.upToDateWhen { false }
+
+    testClassesDir = sourceSets.integrationTest.output.classesDir
+    classpath = sourceSets.integrationTest.runtimeClasspath
+}
+
+check{
+    dependsOn integrationTest
+}
+
+tasks.withType(Test) {
+    reports.html.destination = file("${reporting.baseDir}/${name}")
+}

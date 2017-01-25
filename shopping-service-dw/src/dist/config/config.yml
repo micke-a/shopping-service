@@ -1,0 +1,9 @@
+server:
+  rootPath: '/*'
+
+
+logging:
+  level: INFO
+  loggers:
+    org.hibernate.SQL:
+      level: DEBUG
