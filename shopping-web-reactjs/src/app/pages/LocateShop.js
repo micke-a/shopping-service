@@ -8,6 +8,20 @@ export const LocateShop = (props) => {
                     <p>Locate Shop</p>
                 </div>
             </div>
+
+            <div className="row">
+                <div className="col-xs-12">
+                    <form>
+                        <label>Longitude</label>
+                        <input type="text" name="longitude"/>
+
+                        <label>Latitude</label>
+                        <input type="text" name="latitude"/>
+
+                        <bu
+                    </form>
+                </div>
+            </div>
         </div>
     );
 }
