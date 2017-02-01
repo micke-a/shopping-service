@@ -150,3 +150,7 @@ See https://www.jetbrains.com/help/idea/2016.2/configuring-annotation-processing
 Double check that you've set the `GOOGLE_MAPS_API_KEY` if not the context load test will fail.
 
 When running integration tests you'll also need a the application running on localhost!
+
+
+# Include test
+include::shopping-servicesb/README.adoc[]
