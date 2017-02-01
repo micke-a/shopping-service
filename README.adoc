@@ -153,4 +153,4 @@ When running integration tests you'll also need a the application running on loc
 
 
 # Include test
-include::shopping-servicesb/README.adoc[]
+[shopping-servicesb/README.adoc]
