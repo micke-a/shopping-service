@@ -61,9 +61,16 @@ public class ShopResource {
     @Timed
     @Path("/shops/{longitude}/{latitude}/")
     public Optional<Shop> getShopsForLongLat(
-            @QueryParam("longitude") double longitude,
-            @QueryParam("latitude") double latitude){
+            @PathParam("longitude") double longitude,
+            @PathParam("latitude") double latitude){
 
         return shopLocatorService.findShopNearestTo(new Location(longitude, latitude));
+    }
+
+    @GET
+    @Timed
+    @Path("/shops/{id}")
+    public Optional<Shop> getShopsForLongLat(@PathParam("id") int id){
+        return shopRepository.findById(id);
     }
 }

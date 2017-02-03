@@ -18,7 +18,7 @@ export const LocateShop = (props) => {
                         <label>Latitude</label>
                         <input type="text" name="latitude"/>
 
-                        <bu
+                        <button>Locate</button>
                     </form>
                 </div>
             </div>

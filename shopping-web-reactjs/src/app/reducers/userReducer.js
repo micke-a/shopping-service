@@ -1,6 +1,7 @@
 const userReducer = (state = {
     name: "Max",
-    age: 27
+    age: 27,
+    shops: []
 }, action) => {
     switch (action.type) {
         case "SET_NAME_FULFILLED":
@@ -15,7 +16,14 @@ const userReducer = (state = {
                 age: action.payload
             };
             break;
+        case "SET_SHOPS":
+            state = {
+                ...state,
+                    shops: action.payload
+            };
+            break;
     }
+
     return state;
 };
 

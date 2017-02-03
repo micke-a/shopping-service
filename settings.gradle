@@ -1,3 +1,4 @@
 include 'shopping-service-sb', 'shopping-service-dw', 'shopping-service-lib'
 include 'shopping-web-reactjs'
+include 'shopping-web-a2'
 

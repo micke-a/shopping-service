@@ -1,12 +1,4 @@
 export function setName(name) {
-    // return dispatch => {
-    //     setTimeout(() => {
-    //         dispatch({
-    //             type: "SET_NAME",
-    //             payload: name
-    //         });
-    //     }, 2000);
-    // }
     return {
         type: "SET_NAME",
         payload: new Promise((resolve, reject) => {
@@ -22,4 +14,11 @@ export function setAge(age) {
         type: "SET_AGE",
         payload: age
     };
+}
+
+export function setShops(shops){
+    return {
+        type: "SET_SHOPS",
+        payload: shops
+    }
 }

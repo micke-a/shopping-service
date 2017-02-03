@@ -24,16 +24,7 @@ export JAVA_HOME=/..
 
 # Dropwizard Backend Application
 
-## How To Build
-
-## How To Test
-
-## How To Run
-----
-
-./gradlew shopping-service-dw:run
-
-----
+link:shopping-service-dw/README.md
 
 # Spring-Boot Backend Application
 

@@ -19,4 +19,5 @@ public interface JpaShopRepository extends ShopRepository, JpaRepository<Shop, L
         save(shop);
     }
 
+
 }

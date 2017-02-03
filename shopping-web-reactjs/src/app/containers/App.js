@@ -1,14 +1,16 @@
 import React from "react";
-import {connect} from "react-redux";
-
 import { Navbar } from "../components/Navbar";
-import { setName } from "../actions/userActions";
 
 class App extends React.Component {
+
+    constructor(props){
+        super(props);
+    }
+
     render() {
         return (
             <span>
-                <Navbar navTitle="Shipping" />
+                <Navbar navTitle="Shops Thingy" />
 
                 <div className="container">
                     {this.props.children}
@@ -18,19 +20,4 @@ class App extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => {
-  return {
-      user: state.user,
-      math: state.math
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        setName: (name) => {
-            dispatch(setName(name));
-        }
-    };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

@@ -5,7 +5,7 @@ import {Router, Route, browserHistory, IndexRoute} from "react-router";
 
 import App from "./containers/App";
 import { User } from "./components/User";
-import { ListAllShops } from "./pages/ListAllShops";
+import ListAllShops from "./pages/ListAllShops";
 import { LocateShop } from "./pages/LocateShop";
 import { AddShop } from "./pages/AddShop";
 import { Home } from "./components/Home";
@@ -23,4 +23,5 @@ render(
             </Route>
         </Router>
     </Provider>,
-    window.document.getElementById('app'));
+    window.document.getElementById('app')
+);

@@ -1,0 +1,8 @@
+<md-card>
+
+  <p>
+    <app-shop-card [shop]="shop" *ngIf="shop"></app-shop-card>
+    <span  *ngIf="!shop"> Shop does not exist</span>
+
+  </p>
+</md-card>

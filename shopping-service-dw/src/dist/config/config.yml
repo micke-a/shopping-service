@@ -1,9 +1,10 @@
 server:
   rootPath: '/*'
 
+googleMapsApiKey: ${GOOGLE_MAPS_API_KEY}
 
 logging:
   level: INFO
   loggers:
-    org.hibernate.SQL:
-      level: DEBUG
+    org.eclipse.jetty.servlets: DEBUG
+    org.hibernate.SQL: DEBUG
