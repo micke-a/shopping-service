@@ -1,5 +1,7 @@
 # ReactJS Frontend
 
+**Note:** this is bit half-baked
+
 ## Starting
 
 ----
