@@ -24,8 +24,16 @@ export JAVA_HOME=/..
 
 # Dropwizard Backend Application
 
-link:shopping-service-dw/README.md
+link:shopping-service-dw/README.md[Dropwizard Backend Documentation
 
 # Spring-Boot Backend Application
 
 link:shopping-service-sb/README.adoc[Spring-Boot Backend Documentation]
+
+# Angular 2 Front end
+
+link:shopping-web-a2/README.adoc[Angular 2 Frontend]
+
+# ReactJS Frontend
+
+link:shopping-web-reactjs/README.adoc[ReactJS Frontend]

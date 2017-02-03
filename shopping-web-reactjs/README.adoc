@@ -1,0 +1,8 @@
+# ReactJS Frontend
+
+## Starting
+
+----
+npm start
+----
+Which will start up the application on http://locahost:3000[]
