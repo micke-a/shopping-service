@@ -24,7 +24,7 @@ export JAVA_HOME=/..
 
 # Dropwizard Backend Application
 
-link:shopping-service-dw/README.md[Dropwizard Backend Documentation
+link:shopping-service-dw/README.md[Dropwizard Backend Documentation]
 
 # Spring-Boot Backend Application
 
