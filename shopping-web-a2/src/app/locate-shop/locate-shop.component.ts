@@ -20,7 +20,8 @@ export class LocateShopComponent{
     this.shopService.locate(this.longitude, this.latitude).then(shop => {
       this.nearestShop = shop
       console.log("Shop located", this.nearestShop);
-    });
+    })
+      .catch(error => console.log(error));
 
 
   }
