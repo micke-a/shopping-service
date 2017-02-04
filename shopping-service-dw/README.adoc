@@ -4,7 +4,7 @@
 ## How To Build
 
 ----
-./gradlew shopping-service-dw:assemble
+./gradlew shopping-service-dw:oneJar
 ----
 
 ## How To Test
@@ -14,6 +14,7 @@
 ----
 
 ## How To Run
+
 ----
 
 ./gradlew shopping-service-dw:run
