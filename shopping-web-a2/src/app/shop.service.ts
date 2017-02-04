@@ -1,14 +1,13 @@
 import {Injectable, Inject} from '@angular/core';
 import {Shop} from './shop';
-import {SHOPS} from './mock-shops';
 import {Http, Headers} from "@angular/http";
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class ShopService {
 
-  private host = "http://localhost:8080";
-  private shopsUrl = `${this.host}/shops`;
+  static host:string = "http://localhost:8080";
+  static shopsUrl:string = `${ShopService.host}/shops`;
   private headers = new Headers({'Content-Type': 'application/json'});
 
 
@@ -24,7 +23,7 @@ export class ShopService {
 
   getShops(): Promise<Shop[]> {
     //return Promise.resolve(SHOPS);
-    let retVal:Promise<Shop[]> =  this.http.get(this.shopsUrl)
+    let retVal:Promise<Shop[]> =  this.http.get(ShopService.shopsUrl)
       .toPromise()
       .then(response => response.json() as Shop[])
       .catch(this.handleError);
@@ -36,7 +35,7 @@ export class ShopService {
 
   findById(shopId: number): Promise<Shop>{
 
-    const url = `${this.shopsUrl}/${shopId}`;
+    const url = `${ShopService.shopsUrl}/${shopId}`;
 
     return this.http.get(url)
       .toPromise()
@@ -51,7 +50,7 @@ export class ShopService {
 
   locate(long:number, lat:number): Promise<Shop>{
 
-    const url = `${this.shopsUrl}/${long}/${lat}`;
+    const url = `${ShopService.shopsUrl}/${long}/${lat}`;
 
     return this.http.get(url)
       .toPromise()
@@ -70,16 +69,21 @@ export class ShopService {
   }
 
   addShop(shop:Shop): void{
+    let allShops:Shop[];
+    this.getShops().then(shops => {
+      allShops = shops
 
-    let maxShopId = Math.max(...SHOPS.map(shop => shop.id));
-    let maxLocationId = Math.max(...SHOPS.map(shop => shop.location.id));
+      let maxShopId = Math.max(...allShops.map(shop => shop.id));
 
-    shop.id = maxShopId+1;
-    shop.location.id = maxLocationId+1;
+      shop.id = maxShopId+1;
 
-    this.http.post(this.shopsUrl, JSON.stringify(shop),{headers: this.headers})
-      .toPromise()
-      .catch(this.handleError);
+      this.http.post(ShopService.shopsUrl, JSON.stringify(shop),{headers: this.headers})
+        .toPromise()
+        .catch(this.handleError);
+
+    });
+
+
 
     //SHOPS.push(shop);
   }
