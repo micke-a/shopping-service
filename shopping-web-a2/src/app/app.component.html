@@ -1,38 +1,47 @@
-<md-sidenav-layout [class.m2app-dark]="isDarkTheme">
 
-  <md-sidenav #sidenav mode="side" class="app-sidenav">
-    Sidenav
-    <br/>
-    <a md-button routerLink="/locate" routerLinkActive="active">Locate</a>
-    <br/>
-    <a md-button routerLink="/list" routerLinkActive="active">List</a>
-    <br/>
-    <a md-button routerLink="/add" routerLinkActive="active">Add</a>
-
-
-  </md-sidenav>
-
-  <md-toolbar color="primary">
-    <button class="app-icon-button" (click)="sidenav.toggle()">
-      <i class="material-icons app-toolbar-menu">menu</i>
+<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
     </button>
+    <a class="navbar-brand" href="#">{{title}}</a>
 
-    {{title}}
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
 
-    <a md-button routerLink="/locate" routerLinkActive="active">Locate</a>
-    <a md-button routerLink="/list" routerLinkActive="active">List</a>
-    <a md-button routerLink="/add" routerLinkActive="active">Add</a>
+            <li class="nav-item" [routerLinkActive]="['active']">
+                <a [ngClass]="['nav-link']" routerLink="/list" >List</a>
+            </li>
 
-    <span class="app-toolbar-filler"></span>
-    <button md-button>TOGGLE DARK THEME</button>
-  </md-toolbar>
+            <li class="nav-item" [routerLinkActive]="['active']">
+                <a [ngClass]="['nav-link']" routerLink="/locate" >Locate</a>
+            </li>
 
-  <div class="app-content">
-    <router-outlet></router-outlet>
-  </div>
+            <li class="nav-item" [routerLinkActive]="['active']">
+                <a [ngClass]="['nav-link']" routerLink="/add" >Add</a>
+            </li>
 
-</md-sidenav-layout>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown01">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
 
-<span class="app-action">
-  <button md-fab><md-icon>check circle</md-icon></button>
-</span>
+<br/>
+<br/>
+
+<div class="container-fluid">
+
+    <div class="app-content">
+        <router-outlet></router-outlet>
+    </div>
+</div>

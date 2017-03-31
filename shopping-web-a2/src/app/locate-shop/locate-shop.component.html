@@ -1,26 +1,24 @@
-<md-card>
-  <h2>Locate Nearest Shop</h2>
-  <form (ngSubmit)="onSubmit()" #locateForm="ngForm">
+<div class="row">
+    <div class="col">
+        <h2>Locate Nearest Shop</h2>
+        <form ngClass="form-inline" (ngSubmit)="onSubmit()" #locateForm="ngForm">
 
-    <table cellspacing="0">
-      <tr>
-        <td>
-          <md-input-container>
-            <input md-input placeholder="Longitude" type="number" step="any" required [(ngModel)]="longitude" name="longitude"/>
-          </md-input-container>
-        </td>
-        <td>
-          <md-input-container>
-            <input md-input placeholder="Latitude"  type="number" step="any" required [(ngModel)]="latitude" name="latitdue"/>
-          </md-input-container>
-        </td>
-      </tr>
-    </table>
-    <button md-raised-button color="primary" [disabled]="!locateForm.form.valid">Locate</button>
-    <button md-raised-button (click)="resetForm();" color="warn">Reset</button>
+            <div class="form-group">
+                <input placeholder="Longitude" type="number" step="any" required [(ngModel)]="longitude"
+                       name="longitude"/>
+            </div>
 
-    <p>
-      <app-shop-card [shop]="nearestShop" *ngIf="nearestShop"></app-shop-card>
-    </p>
-  </form>
-</md-card>
+            <div class="form-group">
+                <input placeholder="Latitude" type="number" step="any" required [(ngModel)]="latitude"
+                       name="latitdue"/>
+            </div>
+
+            <button ngClass="button btn-primary" [disabled]="!locateForm.form.valid">Locate</button>
+            <button (click)="resetForm();" ngClass="button btn-warning">Reset</button>
+
+            <p>
+                <app-shop-card [shop]="nearestShop" *ngIf="nearestShop"></app-shop-card>
+            </p>
+        </form>
+    </div>
+</div>

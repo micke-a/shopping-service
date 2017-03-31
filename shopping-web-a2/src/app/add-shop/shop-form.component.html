@@ -1,0 +1,43 @@
+<div class="row">
+    <div class="col">
+        <form (ngSubmit)="onSubmit()" #shopForm="ngForm">
+
+            <div class="form-group">
+                <label for="name">Shop Name</label>
+                <input id="name" ngClass="form-control" placeholder="Shop name" type="text" required
+                       [(ngModel)]="model.name"
+                       name="name"/>
+                <small id="nameHelp" class="form-text text-muted">Display name of new shop</small>
+            </div>
+
+            <div class="form-group">
+                <label for="number">Street Address</label>
+                <input id="number" ngClass="form-control" placeholder="Street Address" type="text" required
+                       [(ngModel)]="model.address.number" name="number"/>
+                <small id="addressHelp" class="form-text text-muted">Shop Address</small>
+            </div>
+
+            <div class="form-group">
+                <label for="postCode">Street Address</label>
+                <input id="postCode" ngClass="form-control" placeholder="Post Code" type="text" required
+                       [(ngModel)]="model.address.postCode" name="postCode"/>
+                <small id="postCodeHelp" class="form-text text-muted">Shop Post Code</small>
+            </div>
+
+            <button (click)="onSubmit()" ngClass="button btn-primary" [disabled]="!shopForm.form.valid">Save</button>
+            <button (click)="resetForm()" ngClass="button btn-warning">Reset</button>
+
+        </form>
+    </div>
+</div>
+
+
+<div class="row mt-3">
+    <div class="col">
+        <div class="card">
+            <div class="card-block">
+                {{diagnostic}}
+            </div>
+        </div>
+    </div>
+</div>

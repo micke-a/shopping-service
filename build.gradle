@@ -1,3 +1,5 @@
+
+
 buildscript {
     repositories {
         mavenCentral()
@@ -7,6 +9,12 @@ repositories {
     mavenCentral()
     jcenter()
 }
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.4.1'
+    distributionUrl = "https://services.gradle.org/distributions/gradle-$gradleVersion-all.zip"
+}
+
 subprojects{
     apply plugin: 'idea'
     apply plugin: 'java'
