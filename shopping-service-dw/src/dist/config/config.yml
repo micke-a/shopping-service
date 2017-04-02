@@ -1,5 +1,5 @@
 server:
-  rootPath: '/*'
+  rootPath: '/api/*'
 
 googleMapsApiKey: ${GOOGLE_MAPS_API_KEY}
 

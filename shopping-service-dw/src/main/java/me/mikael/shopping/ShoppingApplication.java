@@ -2,6 +2,7 @@ package me.mikael.shopping;
 
 import com.google.maps.model.Distance;
 import io.dropwizard.Application;
+import io.dropwizard.assets.AssetsBundle;
 import io.dropwizard.configuration.EnvironmentVariableSubstitutor;
 import io.dropwizard.configuration.SubstitutingSourceProvider;
 import io.dropwizard.setup.Bootstrap;
@@ -51,6 +52,8 @@ public class ShoppingApplication extends Application<ShoppingApplicationConfigur
                         new EnvironmentVariableSubstitutor()
                 )
         );
+
+        bootstrap.addBundle(new AssetsBundle("/assets", "/", "index.html", "static-assets"));
 
         shopRepository = new ListShopRepository();
 

@@ -24,4 +24,54 @@ or
 ./gradlew shopping-service-dw:oneJar
 java -jar shopping-service-dw\build\libs\shopping-service-dw-0.0.1-SNAPSHOT.jar server shopping-service-dw\src\dist\config\config.yml
 
+java -jar shopping-service-dw/build/libs/shopping-service-dw-0.0.1-SNAPSHOT-standalone.jar server shopping-service-dw/src/dist/config/config.yml
+
+----
+
+## Docker
+
+### Building Docker image
+
+To build and create the Docker image locally you run the following Gradle command,
+which builds the application jar and uses `src/docker/Dockerfile` to build a container
+
+In the project root folder run
+
+----
+ ./gradlew clean shopping-service-dw:buildDockerImage
+----
+
+### Starting a Docker cointainer
+
+First make sure you have the `GOOGLE_MAPS_API_KEY` environment variable setup properly in your shell.
+
+Then run the below command:
+
+----
+docker run -p 8080:8080 -p 8081:8081 -e GOOGLE_MAPS_API_KEY shopping-service-dw
+----
+
+Which passes starts the container and allows the necessary port to be exposed outside the container,
+the `-e` without a value simply passes in the value from your current shell.
+
+
+### Stopping a Docker container
+
+To stop the running container, run `docker stop <container_id>` ,
+you find the container id by running `docker ps`
+
+Example:
+
+----
+$ docker ps
+CONTAINER ID        IMAGE                        COMMAND                  CREATED             STATUS              PORTS                              NAMES
+21b7f37c0011        shopping-service-dw          "/bin/sh -c 'java ..."   5 minutes ago       Up 5 minutes        0.0.0.0:8080-8081->8080-8081/tcp   kind_hawking
+
+$ docker stop 21b7f37c0011
+21b7f37c0011
+
+$ docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+
+$
 ----

@@ -1,1 +1,12 @@
+import static org.apache.tools.ant.taskdefs.condition.Os.*
 
+task ngBuild(type:Exec){
+    workingDir '.'
+
+    if(isFamily(FAMILY_WINDOWS)) {
+        commandLine 'cmd', '/c', 'ng build'
+    }
+    else {
+        commandLine 'ng build'
+    }
+}
