@@ -9,5 +9,5 @@ import java.util.Optional;
  */
 public interface GeolocationService {
 
-    Optional<Location> findLocationByNumberAndPostCode(final String number, final String postCode);
+    Optional<Location> findLocationByStreetAndPostCode(final String number, final String postCode);
 }

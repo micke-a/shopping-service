@@ -25,7 +25,7 @@ public class GoogleGeolocationTests {
 
     @Test
     public void locationLookupAgainstKnownLocation(){
-        Optional<Location> locationOptional = ggs.findLocationByNumberAndPostCode("70 Buckwells Field","SG143FF");
+        Optional<Location> locationOptional = ggs.findLocationByStreetAndPostCode("70 Buckwells Field","SG143FF");
 
         assertTrue(locationOptional.isPresent());
 
@@ -37,7 +37,7 @@ public class GoogleGeolocationTests {
 
     @Test
     public void locationLookupAgainstLocationWhichDoesNotExist(){
-        Optional<Location> locationOptional = ggs.findLocationByNumberAndPostCode("123 Gotham City","BATMAN");
+        Optional<Location> locationOptional = ggs.findLocationByStreetAndPostCode("123 Gotham City","BATMAN");
 
         assertFalse(locationOptional.isPresent());
     }

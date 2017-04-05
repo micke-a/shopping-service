@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col">
-        <form (ngSubmit)="onSubmit()" #shopForm="ngForm">
+        <form #shopForm="ngForm">
 
             <div class="form-group">
                 <label for="name">Shop Name</label>
@@ -11,9 +11,9 @@
             </div>
 
             <div class="form-group">
-                <label for="number">Street Address</label>
-                <input id="number" ngClass="form-control" placeholder="Street Address" type="text" required
-                       [(ngModel)]="model.address.number" name="number"/>
+                <label for="street">Street Address</label>
+                <input id="street" ngClass="form-control" placeholder="Street Address" type="text" required
+                       [(ngModel)]="model.address.street" name="street"/>
                 <small id="addressHelp" class="form-text text-muted">Shop Address</small>
             </div>
 
@@ -24,10 +24,15 @@
                 <small id="postCodeHelp" class="form-text text-muted">Shop Post Code</small>
             </div>
 
-            <button (click)="onSubmit()" ngClass="button btn-primary" [disabled]="!shopForm.form.valid">Save</button>
-            <button (click)="resetForm()" ngClass="button btn-warning">Reset</button>
+            <button (click)="onSubmit()" ngClass="btn btn-primary" [disabled]="!shopForm.form.valid">Save</button>
+            <button (click)="resetForm()" ngClass="btn btn-warning">Reset</button>
 
         </form>
+
+        <button class="btn" (click)="setNewShopState('highlight')">Set state to highlight</button>
+        <button class="btn" (click)="setNewShopState('normal')">set state to normal</button>
+
+
     </div>
 </div>
 
@@ -37,7 +42,17 @@
         <div class="card">
             <div class="card-block">
                 {{diagnostic}}
+                {{newShopState}}
             </div>
         </div>
+    </div>
+</div>
+
+<div class="row mt-3" [hidden]="addedShop == null" >
+    <div class="col" >
+        <div [@addNewAnim]="newShopState" style="border: 1px;">
+            <h3>New Shop Added</h3>
+        </div>
+            <app-shop-card [@addNewAnim]="newShopState" [shop]="addedShop"></app-shop-card>
     </div>
 </div>

@@ -1,6 +1,5 @@
 package me.mikael.shopping;
 
-import com.google.maps.model.Distance;
 import io.dropwizard.Application;
 import io.dropwizard.assets.AssetsBundle;
 import io.dropwizard.configuration.EnvironmentVariableSubstitutor;
@@ -59,7 +58,7 @@ public class ShoppingApplication extends Application<ShoppingApplicationConfigur
 
         for(int i=0; i<10;i++) {
             ShopAddress sa = new ShopAddress();
-            sa.setNumber(i+" Buckwells Field");
+            sa.setStreet(i+" Buckwells Field");
             sa.setPostCode("SG143FF");
 
             Location loc = new Location(i,i);

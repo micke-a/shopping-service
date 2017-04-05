@@ -26,9 +26,9 @@ public class GoogleGeolocationService implements GeolocationService {
     }
 
     @Override
-    public Optional<Location> findLocationByNumberAndPostCode(final String number, final String postCode) {
+    public Optional<Location> findLocationByStreetAndPostCode(final String street, final String postCode) {
 
-        GeocodingApiRequest request = GeocodingApi.newRequest(geoApiContext).address(number +" " +postCode);
+        GeocodingApiRequest request = GeocodingApi.newRequest(geoApiContext).address(street +" " +postCode);
         GeocodingResult[] results;
         Location loc = null;
         try {

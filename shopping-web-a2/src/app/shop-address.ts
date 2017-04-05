@@ -1,6 +1,6 @@
 
 export class ShopAddress{
-  number: string;
+  street: string;
   postCode: string;
 
 }

@@ -1,6 +1,6 @@
 # ReactJS Frontend
 
-**Note:** this is bit half-baked
+**Note:** this is very half-baked and abandoned since I'll be using angular for a bit.
 
 ## Starting
 

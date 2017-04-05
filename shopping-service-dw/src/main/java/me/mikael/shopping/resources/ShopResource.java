@@ -10,12 +10,10 @@ import me.mikael.shopping.api.domain.Shop;
 import me.mikael.shopping.api.domain.ShopAddress;
 import me.mikael.shopping.api.persistence.ShopRepository;
 import me.mikael.shopping.api.service.GeolocationService;
-import me.mikael.shopping.api.service.GoogleGeolocationService;
 import me.mikael.shopping.api.service.ShopLocatorService;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import java.util.Arrays;
 import java.util.Optional;
 
 @Path("/")
@@ -36,17 +34,19 @@ public class ShopResource {
     @POST
     @Timed
     @Path("/shops")
-    public void addShop(Shop shop){
+    public Shop addShop(Shop shop){
 
         //Fetch and set the geolocation of the Shop
         final ShopAddress sa = shop.getAddress();
 
-        final Optional<Location> shopLocation = geolocationService.findLocationByNumberAndPostCode(sa.getNumber(), sa.getPostCode() );
+        final Optional<Location> shopLocation = geolocationService.findLocationByStreetAndPostCode(sa.getStreet(), sa.getPostCode() );
 
         if(shopLocation.isPresent()){
             shop.setLocation(shopLocation.get());
             shopRepository.saveShop(shop);
         }
+
+        return shop;
     }
 
     @GET

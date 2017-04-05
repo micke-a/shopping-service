@@ -32,7 +32,7 @@ link:shopping-service-sb/README.adoc[Spring-Boot Backend Documentation]
 
 # Angular 2 Front end
 
-link:shopping-web-a2/README.adoc[Angular 2 Frontend]
+link:shopping-web-a2/README.adoc[Angular 4 Frontend]
 
 # ReactJS Frontend
 

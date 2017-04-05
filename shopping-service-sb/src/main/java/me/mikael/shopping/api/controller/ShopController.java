@@ -34,7 +34,7 @@ public class ShopController {
         //Fetch and set the geolocation of the Shop
         final ShopAddress sa = shop.getAddress();
 
-        final Optional<Location> shopLocation = geolocationService.findLocationByNumberAndPostCode(sa.getNumber(), sa.getPostCode() );
+        final Optional<Location> shopLocation = geolocationService.findLocationByStreetAndPostCode(sa.getStreet(), sa.getPostCode() );
 
         if(shopLocation.isPresent()){
             shop.setLocation(shopLocation.get());

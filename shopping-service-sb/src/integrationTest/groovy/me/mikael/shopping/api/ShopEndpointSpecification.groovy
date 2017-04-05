@@ -55,7 +55,7 @@ class ShopEndpointSpecification extends Specification{
             def shop = it.find { s -> s.id == 1 }
 
             shop.name == 'name0'
-            shop.address.number == '100'
+            shop.address.getStreet == '100'
             shop.address.postCode == 'SG140FF'
             shop.location.latitude != null
             shop.location.longitude != null

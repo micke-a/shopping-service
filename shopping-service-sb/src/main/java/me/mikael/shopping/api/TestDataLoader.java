@@ -25,7 +25,7 @@ public class TestDataLoader {
 
         for(int i=0; i<10;i++) {
             ShopAddress sa = new ShopAddress();
-            sa.setNumber("10"+i);
+            sa.setStreet("10"+i);
             sa.setPostCode("SG14"+i+"FF");
 
             Location loc = new Location(i,i);

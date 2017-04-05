@@ -94,7 +94,7 @@ POST /shops
 {
 "name": "New Shop",
 "address": {
-  "number": "70 Buckwells Field",
+  "street": "70 Buckwells Field",
   "postCode": "SG143FF"
 }
 }

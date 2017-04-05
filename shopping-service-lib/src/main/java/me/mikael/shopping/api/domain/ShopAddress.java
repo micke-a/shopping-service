@@ -17,16 +17,16 @@ public class ShopAddress {
     @JsonIgnore
     private long version;
 
-    private String number;
+    private String street;
     private String postCode;
 
 
-    public String getNumber() {
-        return number;
+    public String getStreet() {
+        return street;
     }
 
-    public void setNumber(String number) {
-        this.number = number;
+    public void setStreet(String street) {
+        this.street = street;
     }
 
     public String getPostCode() {
